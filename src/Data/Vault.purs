@@ -1,6 +1,7 @@
 module Data.Vault
   ( Vault
   , Key
+  , adjust
   , empty
   , newKey
   , insert
@@ -17,7 +18,7 @@ import Effect.Ref (Ref)
 import Effect.Ref as Ref
 
 import Data.Function.Uncurried as Fn
-import Data.Maybe (Maybe(..))
+import Data.Maybe (Maybe(..), fromMaybe)
 import Data.Vault.Internal as V
 
 -- | A persistent store for values of arbitrary types.
@@ -44,6 +45,10 @@ newKey = do
 -- | Insert a value for a given key. Overwrites any previous value.
 insert :: forall a. Key a -> a -> Vault -> Vault
 insert (Key k ref) a (Vault m) = Vault (Fn.runFn3 V.insert k (Ref.write (Just a) ref) m)
+
+-- | Modify the value corresponding to the specified key by applying the specified function.
+adjust :: forall a. (a -> a) -> Key a -> Vault -> Vault
+adjust f k m = fromMaybe m $ lookup k m >>= \x -> pure $ insert k (f x) m
 
 -- | Delete a key from the vault.
 delete :: forall a. Key a -> Vault -> Vault
