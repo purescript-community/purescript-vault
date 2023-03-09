@@ -1,10 +1,10 @@
 "use strict";
 
-exports.newUnique = function () {
+export function newUnique() {
   return Symbol();
-};
+}
 
-exports.empty = Object.create(null);
+export const empty = Object.create(null);
 
 function _copySM(m) {
   var keys = Object.getOwnPropertySymbols(m),
@@ -15,17 +15,17 @@ function _copySM(m) {
   return sm;
 }
 
-exports.lookup = function (no, yes, k, m) {
+export function lookup(no, yes, k, m) {
   return k in m ? yes(m[k]) : no;
-};
+}
 
-exports.insert = function (k, v, m) {
+export function insert(k, v, m) {
   var n = _copySM(m);
   n[k] = v;
   return n;
 }
 
-exports.delete = function (k, m) {
+export function _delete(k, m) {
   var result = Object.create(null);
   var keys = Object.getOwnPropertySymbols(m);
   for (var i = 0, len = keys.length; i < len; i++) {
@@ -35,7 +35,7 @@ exports.delete = function (k, m) {
   return result
 }
 
-exports.union = function (m, n) {
+export function union(m, n) {
   var result = Object.create(null);
   var k1 = Object.getOwnPropertySymbols(n);
   for (var i = 0, len = k1.length; i < len; i++) {

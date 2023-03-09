@@ -1,20 +1,19 @@
 module Test.Main where
 
 import Prelude
-import Control.Monad.Eff (Eff)
-import Control.Monad.Eff.Console (CONSOLE, log)
-import Control.Monad.Eff.Ref (REF)
+import Effect (Effect)
+import Effect.Console (log)
 
 import Data.Vault as V
 import Data.Maybe (Maybe(..))
 
-itemKeyInt :: forall eff. Eff (ref :: REF | eff) (V.Key Int)
+itemKeyInt :: Effect (V.Key Int)
 itemKeyInt = V.newKey
 
-itemKeyString :: forall eff. Eff (ref :: REF | eff) (V.Key String)
+itemKeyString :: Effect (V.Key String)
 itemKeyString = V.newKey
 
-testCreateAndGet :: forall eff. Eff (console :: CONSOLE, ref :: REF | eff) Unit
+testCreateAndGet :: Effect Unit
 testCreateAndGet = do
   k1 <- itemKeyString
   k2 <- itemKeyInt
@@ -24,7 +23,7 @@ testCreateAndGet = do
   when (v1 /= Just "vault") (log "Failed getting value from Vault")
   when (v2 /= Nothing) (log "Non existing value should return Nothing")
 
-testCreateAndDelete :: forall eff. Eff (console :: CONSOLE, ref :: REF | eff) Unit
+testCreateAndDelete :: Effect Unit
 testCreateAndDelete = do
   k <- itemKeyInt
   let m1 = V.insert k 1 V.empty
@@ -33,7 +32,7 @@ testCreateAndDelete = do
       v2 = V.lookup k m2
   when (v1 == v2) $ log "Deleted item should return Nothing"
 
-main :: forall eff. Eff (console :: CONSOLE, ref :: REF | eff) Unit
+main :: Effect Unit
 main = do
   log "Create new Vault Item"
   testCreateAndGet
