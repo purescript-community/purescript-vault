@@ -18,6 +18,7 @@ empty  :: Vault
 lookup :: forall a. Key a -> Vault -> Maybe a
 insert :: forall a. Key a -> a -> Vault -> Vault
 delete :: forall a. Key a -> Vault -> Vault
+adjust :: forall a. (a -> a) -> Key a -> Vault -> Vault
 ```
 
 ## Installation
