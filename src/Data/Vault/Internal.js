@@ -43,7 +43,7 @@ export function union(m, n) {
   }
   var k2 = Object.getOwnPropertySymbols(m);
   for (var j = 0, length = k2.length; j < length; j++) {
-    result[k2[j]] = n[k2[j]];
+    result[k2[j]] = m[k2[j]];
   }
   return result;
 }
