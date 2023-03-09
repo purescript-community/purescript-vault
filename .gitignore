@@ -1,8 +1,9 @@
-/bower_components/
-/node_modules/
-/.pulp-cache/
-/output/
-/generated-docs/
-/.psc*
-/.purs*
-/.psa*
+.*
+!.gitignore
+!.github
+!.editorconfig
+!.tidyrc.json
+
+output
+generated-docs
+bower_components
