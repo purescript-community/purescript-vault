@@ -15,7 +15,7 @@ let
   }) {inherit pkgs;};
 in
   pkgs.stdenv.mkDerivation {
-    name = "tecton";
+    name = "vault";
     buildInputs = with pursPkgs; [
       purs
       spago
