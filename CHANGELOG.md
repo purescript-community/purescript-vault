@@ -5,6 +5,16 @@ Notable changes to this project are documented in this file. The format is based
 ## [Unreleased]
 
 Breaking changes:
+
+New features:
+
+Bugfixes:
+
+Other improvements:
+
+## [1.0.0] - 2023-03-09
+
+Breaking changes:
 - Updated to v0.15 of the compiler, dropping support for previous versions. (#1 by @nsaunders)
 
 New features:
