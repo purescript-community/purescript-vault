@@ -15,6 +15,16 @@ jobs:
 
       - name: Set up a PureScript toolchain
         uses: purescript-contrib/setup-purescript@main
+        with:
+          bower: "latest"
+          purescript: "latest"
+          psa: "latest"
+          pulp: "latest"
+          spago: "latest"
+          purs-tidy: "latest"
+
+      - name: Check formatting
+        run: purs-tidy check src test
 
       - name: Cache PureScript dependencies
         uses: actions/cache@v2
@@ -32,3 +42,12 @@ jobs:
 
       - name: Run tests
         run: spago -x test.dhall test
+
+      - name: Verify Bower & Pulp
+        run: |
+          npm install bower pulp@16.0.0-0
+          npx bower install
+          npx pulp build -- --censor-lib --strict
+          if [ -d "test" ]; then
+            npx pulp test
+          fi
