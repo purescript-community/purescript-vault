@@ -23,7 +23,7 @@
     "purescript-unique": "^0.6.0"
   },
   "devDependencies": {
-    "purescript-psci-support": "^6.0.0",
-    "purescript-console": "^6.0.0"
+    "purescript-aff": "^7.0.0",
+    "purescript-spec": "^7.0.0"
   }
 }
