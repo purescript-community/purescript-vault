@@ -1,7 +1,6 @@
 { name = "vault"
 , dependencies =
   [ "effect"
-  , "functions"
   , "maybe"
   , "ordered-collections"
   , "prelude"

@@ -16,7 +16,6 @@
   ],
   "dependencies": {
     "purescript-prelude": "^6.0.0",
-    "purescript-functions": "^6.0.0",
     "purescript-effect": "^4.0.0",
     "purescript-ordered-collections": "^3.0.0",
     "purescript-refs": "^6.0.0",
