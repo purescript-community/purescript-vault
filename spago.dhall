@@ -1,5 +1,12 @@
 { name = "vault"
-, dependencies = [ "effect", "functions", "maybe", "prelude", "refs" ]
+, dependencies =
+  [ "effect"
+  , "maybe"
+  , "ordered-collections"
+  , "prelude"
+  , "refs"
+  , "unique"
+  ]
 , packages = ./packages.dhall
 , sources = [ "src/**/*.purs" ]
 }

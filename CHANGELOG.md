@@ -16,6 +16,7 @@ Bugfixes:
 Other improvements:
 - Updated the project to the standards of the [purescript-contrib](https://github.com/purescript-contrib) organization. ([713fd52](https://github.com/purescript-community/purescript-vault/commit/713fd521362c2833cea5f9ef3afb1e600164b903) by @nsaunders)
 - Updated the test suite to include better coverage. (#2 by @nsaunders)
+- New implementation removes FFI code. (#3 by @nsaunders)
 
 ## [0.1.0] - 2017-10-30
 
