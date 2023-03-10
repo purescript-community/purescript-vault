@@ -22,7 +22,6 @@ import Data.Map (Map)
 import Data.Map as Map
 import Data.Maybe (Maybe(..), fromMaybe)
 import Data.Unique (Unique, newUnique)
-import Data.Vault.Internal as V
 
 -- | A persistent store for values of arbitrary types.
 newtype Vault = Vault (Map Unique Item)
@@ -68,6 +67,3 @@ lookup (Key k ref) (Vault m) =
 
 union :: Vault -> Vault -> Vault
 union (Vault m) (Vault n) = Vault $ Map.union m n
-
-rollItem :: forall a. Maybe a -> { state :: Maybe a, value :: Maybe a }
-rollItem a = { state: Nothing, value: a }
