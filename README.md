@@ -5,9 +5,9 @@
 [![Pursuit](https://pursuit.purescript.org/packages/purescript-vault/badge)](https://pursuit.purescript.org/packages/purescript-vault)
 [![Maintainer: nsaunders](https://img.shields.io/badge/maintainer-nsaunders-teal.svg)](https://github.com/nsaunders)
 
-A typed, persistent store for values of arbitrary types. This is a port of the Haskell [Vault](https://github.com/HeinrichApfelmus/vault) library by Heinrich Apfelmus.
+A typed, persistent store for values of arbitrary types, ported from the Haskell [Vault](https://github.com/HeinrichApfelmus/vault) library by Heinrich Apfelmus.
 
-Think of it as Map that can store for values of arbitrary types, but it's type-safe. You can store of any types by creating Key a first, this key used to parameterized the type you are going to store in vault.
+Think of a vault like a map that can store any value in a type-safe manner. The first step is to generate a new `Key a` value using the `newKey` function. Then, use `insert`, `lookup`, `delete`, etc., just like their [Data.Map](https://pursuit.purescript.org/packages/purescript-ordered-collections/3.0.0/docs/Data.Map) analogs.
 
 ```purescript
 data Vault
@@ -15,8 +15,8 @@ data Key a
 
 newKey :: forall a. Effect (Key a)
 empty  :: Vault
-lookup :: forall a. Key a -> Vault -> Maybe a
 insert :: forall a. Key a -> a -> Vault -> Vault
+lookup :: forall a. Key a -> Vault -> Maybe a
 delete :: forall a. Key a -> Vault -> Vault
 adjust :: forall a. (a -> a) -> Key a -> Vault -> Vault
 ```
